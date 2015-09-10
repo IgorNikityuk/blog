@@ -1,0 +1,61 @@
+<div>
+  <style scoped>
+
+    .button-success,
+    .button-error,
+    .button-warning,
+    .button-secondary {
+        color: white;
+        border-radius: 4px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-success {
+        background: rgb(28, 184, 65); /* this is a green */
+    }
+
+    .button-error {
+        background: rgb(202, 60, 60); /* this is a maroon */
+    }
+
+    .button-warning {
+        background: rgb(223, 117, 20); /* this is an orange */
+    }
+
+    .button-secondary {
+        background: rgb(66, 184, 221); /* this is a light blue */
+    }
+
+  </style>
+</div>
+
+  <h1><center>Listing Articles</center></h1>
+  
+  <table class="pure-table pure-table-bordered pure-table-striped">
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th colspan="5"></th>
+    </tr>
+   
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= link_to article.title, article_path(article), :style => "text-decoration: none" %></td>
+        <td><%= article.text %></td>
+        <td><%= button_to "Edit", edit_article_path(article), :class => "button-warning pure-button", method: 'get' %></td>
+        <td><%= button_to "Destroy", article_path(article), :class => "button-error pure-button",
+                method: :delete,
+                data: { confirm: 'Are you sure you want to destroy this article?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+  
+  <br></br>
+  <%= button_to "Create new article", new_article_path, :class => "button-success pure-button", method: 'get' %>
+  <br></br>
+  <%= button_to "Destroy all articles", article_destroy_all_path, :class => "button-success pure-button", method: :get,
+      data: { confirm: 'Are you sure you want to destroy all articles?' } %>
+  <br></br>
+  <%= button_to 'Back', root_path, :class => 'button-secondary pure-button', method: 'get' %>
+
+

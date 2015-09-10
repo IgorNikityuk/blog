@@ -1,0 +1,56 @@
+<p>Create new user</p>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %> prohibited
+      this article from being saved:
+    </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user do |user| %>
+  <tr> Name*
+    <td><%= user.text_field :name %></td>
+  </tr> <br>
+  <tr> Login*
+    <td><%= user.text_field :login %></td>
+  </tr> <br>
+  <tr> Password*
+    <td><%= user.text_field :password %></td>
+  </tr> <br>
+  <tr> Email*
+    <td><%= user.text_field :email %></td>
+  </tr> <br>
+  <tr> VK account
+    <td><%= user.text_field :vk_account %></td>
+  </tr> <br>
+  <tr> Age
+    <td><%= user.text_field :age %></td>
+  </tr> <br>
+  <tr> Country
+    <td><%= user.text_field :country %></td>
+  </tr> <br>
+  <tr> City
+    <td><%= user.text_field :city %></td>
+  </tr> <br>
+  <tr> Phone number
+    <td><%= user.text_field :phone_number %></td>
+  </tr> <br>
+  <tr> Sex
+    <td><%= user.text_field :sex %></td>
+  </tr> <br>
+  <tr> This is admin user?
+    <td><%= user.check_box :admin %></td>
+  </tr> <br>
+
+  <%= user.submit %>
+  
+<% end %>
+
+<%= button_to "Back", users_path, method: :get %>

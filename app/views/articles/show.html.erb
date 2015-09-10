@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test page</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+</head>
+<body>
+
+<div>
+    <style scoped>
+
+        .button-success,
+        .button-error,
+        .button-warning,
+        .button-secondary {
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-success {
+            background: rgb(28, 184, 65); /* this is a green */
+        }
+
+        .button-error {
+            background: rgb(202, 60, 60); /* this is a maroon */
+        }
+
+        .button-warning {
+            background: rgb(223, 117, 20); /* this is an orange */
+        }
+
+        .button-secondary {
+            background: rgb(66, 184, 221); /* this is a light blue */
+        }
+
+    </style>
+</div>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+ 
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+ 
+<h2><b>Comments</b></h2>
+<%= render @article.comments %>
+<% @article.comments.all.each do |comment| %>
+  <table>
+    <th><b>Commenter</b></th>
+    <th><b>Comment</b></th>
+
+    <tr></tr>
+    
+
+  </table>
+<% end %>
+ 
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+<%= button_to "Edit", edit_article_path(@article), :class => "button-warning pure-button", :method => "get" %>
+<%= button_to "Back", articles_path(@article), :class => "pure-button-active", :method => "get" %>
+
+
+
+
+</body>
+</html>

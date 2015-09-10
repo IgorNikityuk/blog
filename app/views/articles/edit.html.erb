@@ -1,0 +1,5 @@
+<h1>Edit article</h1>
+ 
+<%= render 'form' %>
+ 
+<%= button_to 'Back', articles_path(period: 1.month.ago), :class => 'button-secondary pure-button', :method => 'get' %>

@@ -1,0 +1,45 @@
+<h1><center>Users</center></h1>
+
+  <table class="pure-table pure-table-bordered pure-table-striped">
+  
+    <tr>
+      <th>Name</th>
+      <th>Login</th>
+      <th>Password</th>
+      <th>Email</th>
+      <th>VK account</th>
+      <th>Age</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Phone number</th>
+      <th>Sex</th>
+      <th>Admin</th>
+      <th colspan="5"></th>
+    </tr>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user_path(user), method: :get %></td>
+          <td><%= user.login %></td>
+          <td><%= user.password %></td>
+          <td><%= user.email %></td>
+          <td><%= user.vk_account %></td>
+          <td><%= user.age %></td>
+          <td><%= user.country %></td>
+          <td><%= user.city %></td>
+          <td><%= user.phone_number %></td>
+          <td><%= user.sex %></td>
+          <td><%= user.admin.eql?("1") ? "yes" : "no" %></td>
+          <td><%= link_to "Edit", edit_user_path(user), method: 'get' %></td>
+          <td><%= link_to "Destroy", user_path(user), 
+                method: :delete, 
+                data: { confirm: 'Are you sure you want to destroy all articles?' } %></td>
+        </tr>
+      <% end %>    
+    </tbody>
+
+  </table>
+
+  <%= link_to "Create new user", new_user_path, :class => "button-success pure-button", method: :get %>
+  <%= button_to "Back", root_path, :class => 'button-secondary pure-button', method: :get %>
