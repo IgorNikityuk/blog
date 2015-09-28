@@ -1,36 +1,28 @@
-<style scoped>
-
-        .button-success,
-        .button-error,
-        .button-warning,
-        .button-secondary {
-            color: white;
-            border-radius: 4px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-        }
-
-        .button-success {
-            background: rgb(28, 184, 65); /* this is a green */
-        }
-
-        .button-error {
-            background: rgb(202, 60, 60); /* this is a maroon */
-        }
-
-        .button-warning {
-            background: rgb(223, 117, 20); /* this is an orange */
-        }
-
-        .button-secondary {
-            background: rgb(66, 184, 221); /* this is a light blue */
-        }
-
-    </style>
-
 <%= form_for @article do |f| %>
  
+  <div class="wrapper">
+    <div class="content">
+      <div class="buttons_container">
+          <%= link_to "Back", articles_path, class: "back_link" %>
+          <%= submit_tag("Save", class: "action_with_article_link") %>
+      </div>
+
+      <div class="article_container">
+          <%= f.label :title, class: "labels" %>
+          <%= f.text_field :title, class: "article_title_fields" %> 
+          
+          <%= f.label :text, class: "labels" %>
+          <%= f.text_field :text, class: "article_text_fields" %> 
+
+          <%= f.file_field :avatar, class: "file_field" %>
+      </div>
+          
+      
+    </div>
+  </div>
+
   <% if @article.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="errors">
       <h2>
         <%= pluralize(@article.errors.count, "error") %> prohibited
         this article from being saved:
@@ -42,19 +34,5 @@
       </ul>
     </div>
   <% end %>
- 
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
- 
-  <p>
-    <%= f.label :text %><br>
-    <%= f.text_area :text %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
- 
+
 <% end %>

@@ -1,73 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Test page</title>
-  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-</head>
-<body>
+<div class="header">
+  <p class="header_title"><%= @article.title %> article</p>
+  <div class="header_menu">
+    <div class="pure-menu pure-menu-horizontal" >
+        <ul class="pure-menu-list">
+            <%= link_to "All Articles", articles_path, :class => "pure-menu-item pure-menu-selected pure-menu-link", :id => 'all_articles_menu', :method => 'get'%>
+            <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                <a href="#" id="menuLink1" class="pure-menu-link">Articles by date</a>
+                <ul hover class="pure-menu-children">
+                  <%= link_to "Last month article", articles_path(period: 1.month.ago), :class => "pure-menu-item pure-menu-selected pure-menu-link",  :id => 'menu_item_1' %>
+                  <%= link_to "Last week articles", articles_path(period: 7.days.ago), :class => "pure-menu-item pure-menu-selected pure-menu-link", :id => 'menu_item_2' %>
+                  <%= link_to "Last day articles", articles_path(period: 1.day.ago), :class => "pure-menu-item pure-menu-selected pure-menu-link", :id => 'menu_item_3' %>
+                </ul>
+            </li>
+        </ul>
+      </div>
+  </div>
+</div>
+ 
+<div class="wrapper">
+  <div class="content">
+    <div class="buttons_container">
+        <%= link_to "Back", articles_path, class: "back_link" %>
+        <%= link_to "Edit", edit_article_path(@article), class: 'edit_link', method: 'get' %>
+    </div>
 
-<div>
-    <style scoped>
-
-        .button-success,
-        .button-error,
-        .button-warning,
-        .button-secondary {
-            color: white;
-            border-radius: 4px;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-        }
-
-        .button-success {
-            background: rgb(28, 184, 65); /* this is a green */
-        }
-
-        .button-error {
-            background: rgb(202, 60, 60); /* this is a maroon */
-        }
-
-        .button-warning {
-            background: rgb(223, 117, 20); /* this is an orange */
-        }
-
-        .button-secondary {
-            background: rgb(66, 184, 221); /* this is a light blue */
-        }
-
-    </style>
+    <div class="article_container">
+      <h1>Title</h1>
+        <h3><%= @article.title %><h3>
+      <h1>Text: </h1>
+        <h3><%= @article.text %><h3>
+    </div>
+  </div>
 </div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
- 
-<h2><b>Comments</b></h2>
-<%= render @article.comments %>
-<% @article.comments.all.each do |comment| %>
-  <table>
-    <th><b>Commenter</b></th>
-    <th><b>Comment</b></th>
-
-    <tr></tr>
-    
-
-  </table>
-<% end %>
- 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
-
-<%= button_to "Edit", edit_article_path(@article), :class => "button-warning pure-button", :method => "get" %>
-<%= button_to "Back", articles_path(@article), :class => "pure-button-active", :method => "get" %>
-
-
-
-
-</body>
-</html>
+<img src=<%= @article.avatar.url %>  style="width: 720px; height: 480px; border-radius: 50px"/>

@@ -1,61 +1,55 @@
-<div>
-  <style scoped>
+<%= stylesheet_link_tag "articles_style" %>
+<div class="wrapper">
 
-    .button-success,
-    .button-error,
-    .button-warning,
-    .button-secondary {
-        color: white;
-        border-radius: 4px;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-    }
+  <div class="header">
+    <p class="header_title">Listing Articles</p>
+    <div class="header_menu">
+      <div class="pure-menu pure-menu-horizontal" >
+          <ul class="pure-menu-list">
+              <%= link_to "All Articles", articles_path, :class => "pure-menu-item pure-menu-selected pure-menu-link", :id => 'all_articles_menu', :method => 'get'%>
+              <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                  <a href="#" id="menuLink1" class="pure-menu-link">Articles by date</a>
+                  <ul hover class="pure-menu-children">
+                    <%= link_to "Last month article", articles_path(period: 1.month.ago), :class => "pure-menu-item pure-menu-selected pure-menu-link",  :id => 'menu_item_1' %>
+                    <%= link_to "Last week articles", articles_path(period: 7.days.ago), :class => "pure-menu-item pure-menu-selected pure-menu-link", :id => 'menu_item_2' %>
+                    <%= link_to "Last day articles", articles_path(period: 1.day.ago), :class => "pure-menu-item pure-menu-selected pure-menu-link", :id => 'menu_item_3' %>
+                  </ul>
+              </li>
+          </ul>
+        </div>
+    </div>
+  </div>
 
-    .button-success {
-        background: rgb(28, 184, 65); /* this is a green */
-    }
+  <div class="content">
+      
+    <div class="buttons_container">
+      <%= link_to "Create new article", new_article_path, :class => "create_article_link", method: 'get' %>
+      <%= link_to "Destroy all articles", article_destroy_all_path, :class => "delete_all_articles_link", method: :get,
+          data: { confirm: 'Are you sure you want to destroy all articles?' } %>
+    </div>
 
-    .button-error {
-        background: rgb(202, 60, 60); /* this is a maroon */
-    }
+      <table class="articles_table">
+        <tr>
+          <th>Title</th>
+          <th>Picture</th>
+          <th>Text</th>
+          <th colspan="2"></th>
+        </tr>
+       
+        <% @articles.each do |article| %>
+          <tr>
+            <td><%= link_to article.title, article_path(article), class: 'articles_name' %></td>
+            <td><img src=<%= article.avatar.url %>  style="width: 75px; height: 50px"/></td>
+            <td><%= article.text %></td>
+            <td><%= link_to "Edit", edit_article_path(article), class: 'edit', method: 'get' %></td>
+            <td><%= link_to "Delete", article_path(article), class: 'delete',
+                    method: :delete,
+                    data: { confirm: 'Are you sure you want to destroy this article?' } %></td>
+          </tr>
+        <% end %>
+      </table>
 
-    .button-warning {
-        background: rgb(223, 117, 20); /* this is an orange */
-    }
+  </div>
 
-    .button-secondary {
-        background: rgb(66, 184, 221); /* this is a light blue */
-    }
-
-  </style>
 </div>
-
-  <h1><center>Listing Articles</center></h1>
-  
-  <table class="pure-table pure-table-bordered pure-table-striped">
-    <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th colspan="5"></th>
-    </tr>
-   
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= link_to article.title, article_path(article), :style => "text-decoration: none" %></td>
-        <td><%= article.text %></td>
-        <td><%= button_to "Edit", edit_article_path(article), :class => "button-warning pure-button", method: 'get' %></td>
-        <td><%= button_to "Destroy", article_path(article), :class => "button-error pure-button",
-                method: :delete,
-                data: { confirm: 'Are you sure you want to destroy this article?' } %></td>
-      </tr>
-    <% end %>
-  </table>
-  
-  <br></br>
-  <%= button_to "Create new article", new_article_path, :class => "button-success pure-button", method: 'get' %>
-  <br></br>
-  <%= button_to "Destroy all articles", article_destroy_all_path, :class => "button-success pure-button", method: :get,
-      data: { confirm: 'Are you sure you want to destroy all articles?' } %>
-  <br></br>
-  <%= button_to 'Back', root_path, :class => 'button-secondary pure-button', method: 'get' %>
-
 

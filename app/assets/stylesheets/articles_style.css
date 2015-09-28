@@ -1,0 +1,111 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.header {
+    background-color: #FE9A2E; 
+    width: 100%;
+    height: 100px;
+}
+
+.header_title {
+    color: #FFFFFF;
+    display: block;
+    width: 100%;
+    height: 60%;
+    text-align: center; 
+    display: block;
+    font-family: 'Source Sans Pro', Arial, sans-serif; 
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.header_menu {
+    display: block;
+    width: 100%;
+    height: 40%;
+    text-align: center;
+}
+
+.buttons_container {
+    width: 90%;
+    height: 50px;
+    margin: 20px auto;
+    display: block;
+    text-align: center;
+}
+
+.back_link,
+.create_article_link,
+.delete_all_articles_link {
+    color: #FFFFFF;
+    background-color: #FE9A2E;
+    font-size: 24px;
+    text-decoration: none;
+    border: 1px solid #FFFFFF;
+    border-radius: 50px;
+    width: 150px;
+    float: left;
+    line-height: 2;
+    box-shadow: 5px 5px 10px black;
+}
+
+.create_article_link {
+    width: 250px;
+    margin-left: 50px;
+
+}
+
+.delete_all_articles_link {
+    width: 250px;
+    float: right;
+}
+
+.delete,
+.edit {
+    color: #5bc;
+    text-decoration: none;
+    text-align: center; 
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 20px;
+}
+
+.articles_table {
+    width: 90%;
+    margin: 5px auto;
+}
+
+.articles_name {
+    color: black;
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    text-decoration: none;
+}
+
+.articles_table th {
+    color: #BDBDBD;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 14px;
+    padding: 15px 5px;
+    text-align:left;
+    text-transform: uppercase;
+}
+
+.articles_table tr {
+    border-bottom: 2px solid #FE9A2E;
+}
+
+.articles_table td {
+    border: 1px solid;
+    border-color: #FFFFFF;
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 22px;
+    text-align:left;
+    padding-top: 10px;
+}
+
+.indesit {
+    font-size: 20px;
+}
