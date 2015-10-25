@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang=''>
+<head>
+   <meta charset='utf-8'>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <title>CSS MenuMaker</title>
+</head>
+<body>
+
+<div id='cssmenu'>
+<ul>
+   <li> <%= link_to "Home", articles_path %> </li>
+   <li class='active has-sub'><a href='#'><span>Articles</span></a>
+      <ul>
+        <li class='has-sub'><a href='#'><span>By Date</span></a>
+            <ul>
+               <li><%= link_to "Last month article", articles_path(period: 1.month.ago) %></li>
+               <li><%= link_to "Last week articles", articles_path(period: 7.days.ago) %></li>
+               <li><%= link_to "Last day articles",  articles_path(period: 1.day.ago) %></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#'><span>Cars</span></a>
+            <ul>
+               <li><%= link_to "Minivens",    articles_path(category: "car", sub_category: "miniven") %></li>
+               <li><%= link_to "Sedans",      articles_path(category: "car", sub_category: "sedan") %></li>
+               <li><%= link_to "Sport Cars",  articles_path(category: "car", sub_category: "sport car") %></li>
+               <li><%= link_to "Coupe",       articles_path(category: "car", sub_category: "coupe") %></li>
+               <li><%= link_to "Jeeps",       articles_path(category: "car", sub_category: "jeep") %></li>
+            </ul>
+         </li>
+         <li class='has-sub'><a href='#'><span>Moto</span></a>
+            <ul>
+               <li><%= link_to "Sport",       articles_path(category: "moto", sub_category: "sport") %></li>
+               <li><%= link_to "Super Sport", articles_path(category: "moto", sub_category: "super sport") %></li>
+               <li><%= link_to "Turist",      articles_path(category: "moto", sub_category: "turist") %></li>
+               <li><%= link_to "Chopper",     articles_path(category: "moto", sub_category: "chopper") %></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+   <li><a href='#'><span>About</span></a></li>
+   <li><%= link_to "Users", users_path %></li>
+   <li class='last'><a href='#'><span>Contact</span></a></li>
+</ul>
+<p class="header_title">Car's Articles</p>
+</div>
+</body>
+<html>

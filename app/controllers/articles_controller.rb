@@ -1,7 +1,9 @@
 class ArticlesController < ApplicationController
 
   def index
-    if params[:period]
+    if params[:category] and params[:sub_category]
+      @articles = Article.where(category: params[:category], sub_category: params[:sub_category])
+    elsif params[:period]
       @articles = Article.where("created_at > ?", params[:period])
     else
       @articles = Article.all
@@ -52,6 +54,6 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:title, :text, :avatar)
+    params.require(:article).permit(:title, :text, :avatar, :category, :sub_category)
   end
 end

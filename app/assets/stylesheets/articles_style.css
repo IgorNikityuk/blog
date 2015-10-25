@@ -29,7 +29,7 @@
 }
 
 .buttons_container {
-    width: 90%;
+    width: 80%;
     height: 50px;
     margin: 20px auto;
     display: block;
@@ -53,17 +53,19 @@
 
 .create_article_link {
     width: 250px;
-    margin-left: 50px;
+    margin-left: 300px;
 
 }
 
 .delete_all_articles_link {
     width: 250px;
     float: right;
+    margin-right: 300px;
 }
 
 .delete,
-.edit {
+.edit,
+.hide {
     color: #5bc;
     text-decoration: none;
     text-align: center; 
@@ -72,7 +74,7 @@
 }
 
 .articles_table {
-    width: 90%;
+    width: 80%;
     margin: 5px auto;
 }
 
@@ -106,6 +108,25 @@
     padding-top: 10px;
 }
 
-.indesit {
-    font-size: 20px;
+.button_hover {
+    font-weight: 800;
+}
+
+.small_image {
+    width: 80px; 
+    height: 60px;
+    border-radius: 5px;
+}
+
+.medium_image {
+    border-radius: 20px;
+    height: 240px;
+    width: 320px; 
+}
+
+.no_matches_found {
+    display: block;
+    margin: auto auto;
+    padding: 30px;
+    text-align: center;
 }
