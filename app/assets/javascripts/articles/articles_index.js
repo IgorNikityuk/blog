@@ -20,5 +20,11 @@ $(document).ready(function(){
   if (!$('.hide').length) {
     $('.no_matches_found').show();
   }
+  $('.create_article_link_with_popup').click(function(){
+    $('.overlay').show();
+  });
+  $('.close_link').click(function(){
+    $('.overlay').hide();
+  });
 });
 

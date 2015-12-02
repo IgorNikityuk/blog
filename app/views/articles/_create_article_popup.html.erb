@@ -1,0 +1,35 @@
+<%= render 'create_article_popup_header' %>
+
+<%= form_for Article.new do |f| %>
+ 
+  <div class="popup_wrapper">
+    <div class="popup_content">
+
+      <div class="buttons_container">
+          <a href='#' onclick='open_new_article_popup()' class="close_link">Close</a>
+          <%= submit_tag("Save", class: "action_with_article_link") %>
+      </div>
+
+      <div class="article_container">
+          <%= f.label :title, class: "labels" %>
+          <%= f.text_field :title, class: "article_title_fields" %> 
+          <h5 style="color:red; margin: 5px 10px; display: block; text-align: left" class="required_label">Required*</h5>
+          
+          <%= f.label :text, class: "labels" %>
+          <%= f.text_field :text, class: "article_text_fields" %> 
+          <h5 style="color:red; margin: 5px 10px; display: block; text-align: left" class="required_label">Required*</h5>
+
+          <%= f.label :category, class: "labels" %>
+          <%= f.select(:category, Category.all.collect {|category| [category.name]}) %> 
+
+          <%= f.label :sub_category, class: "labels" %>
+          <%= f.select(:sub_category, Subcategory.all.collect {|subcategory| [subcategory.name]}) %> 
+
+          <%= f.file_field :avatar, class: "file_field" %>
+      </div>
+
+    </div>
+  </div>
+
+
+<% end %>
